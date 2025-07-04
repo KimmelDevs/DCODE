@@ -138,16 +138,6 @@ export default function DashboardPage() {
               </li>
               <li className="relative">
                 <button 
-                  onClick={() => scrollTo(teamRef, 'team')} 
-                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium group"
-                  style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
-                >
-                  Team
-                  <span className={`absolute left-0 bottom-0 h-0.5 bg-[#3f4ca0] transition-all duration-300 ${activeSection === 'team' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-                </button>
-              </li>
-              <li className="relative">
-                <button 
                   onClick={() => scrollTo(projectsRef, 'projects')} 
                   className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium group"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
@@ -166,6 +156,17 @@ export default function DashboardPage() {
                   <span className={`absolute left-0 bottom-0 h-0.5 bg-[#3f4ca0] transition-all duration-300 ${activeSection === 'graphics' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </button>
               </li>
+              <li className="relative">
+                <button 
+                  onClick={() => scrollTo(teamRef, 'team')} 
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium group"
+                  style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
+                >
+                  Team
+                  <span className={`absolute left-0 bottom-0 h-0.5 bg-[#3f4ca0] transition-all duration-300 ${activeSection === 'team' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                </button>
+              </li>
+              
             </ul>
           </nav>
 
