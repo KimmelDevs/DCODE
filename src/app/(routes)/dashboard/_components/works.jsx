@@ -11,6 +11,7 @@ export default function Works() {
   const [currentModalImage, setCurrentModalImage] = useState('')
   const [currentModalProject, setCurrentModalProject] = useState(null)
   const sectionRef = useRef(null)
+const [scrollY, setScrollY] = useState(0);
   const tabRefs = useRef([])
   const projectRefs = useRef([])
 
@@ -153,6 +154,7 @@ export default function Works() {
     ? allProjects 
     : allProjects.filter(project => project.type === activeTab)
 
+    
   // Animation effects
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -422,61 +424,59 @@ export default function Works() {
         </div>
       </div>
 
-      {/* Image Modal */}
-      {modalOpen && currentModalProject && (
-        <div 
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-fadeIn"
-          onClick={closeModal}
-        >
-          <div 
-            className="relative max-w-4xl w-full max-h-[90vh] animate-scaleIn"
-            onClick={e => e.stopPropagation()}
-          >
+      {/* Image Modal */}{modalOpen && currentModalProject && (
+  <div 
+    className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 animate-fadeIn overflow-y-auto"
+    onClick={closeModal}
+  >
+    <div 
+      className="relative my-8 animate-scaleIn"
+      onClick={e => e.stopPropagation()}
+    >
+      <button 
+        className="absolute -top-10 right-0 text-white text-3xl z-10 hover:text-blue-300 transition-colors"
+        onClick={closeModal}
+      >
+        ×
+      </button>
+      <div className="relative">
+        <Image
+          src={currentModalImage}
+          alt={currentModalProject.name}
+          width={1200}
+          height={800}
+          className="object-contain max-h-[80vh] w-auto rounded-lg"
+        />
+      </div>
+      {currentModalProject.gallery && currentModalProject.gallery.length > 1 && (
+        <div className="sticky bottom-4 left-0 right-0 flex justify-center gap-2 mt-4">
+          {currentModalProject.gallery.map((img, idx) => (
             <button 
-              className="absolute -top-12 right-0 text-white text-3xl z-10 hover:text-blue-300 transition-colors"
-              onClick={closeModal}
+              key={idx}
+              className={`w-10 h-10 rounded-full border-2 transition-all duration-200 ${
+                currentModalImage === img 
+                  ? 'border-blue-400 scale-110' 
+                  : 'border-transparent hover:border-white/50'
+              }`}
+              onClick={(e) => {
+                e.stopPropagation()
+                setCurrentModalImage(img)
+              }}
             >
-              ×
-            </button>
-            <div className="relative w-full h-full">
-              <Image
-                src={currentModalImage}
-                alt={currentModalProject.name}
-                width={1200}
-                height={800}
-                className="object-contain max-h-[80vh] w-full rounded-lg"
-              />
-            </div>
-            {currentModalProject.gallery && currentModalProject.gallery.length > 1 && (
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                {currentModalProject.gallery.map((img, idx) => (
-                  <button 
-                    key={idx}
-                    className={`w-10 h-10 rounded-full border-2 transition-all duration-200 ${
-                      currentModalImage === img 
-                        ? 'border-blue-400 scale-110' 
-                        : 'border-transparent hover:border-white/50'
-                    }`}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      setCurrentModalImage(img)
-                    }}
-                  >
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={img}
-                        alt={`Thumbnail ${idx + 1}`}
-                        fill
-                        className="object-cover rounded-full"
-                      />
-                    </div>
-                  </button>
-                ))}
+              <div className="relative w-full h-full">
+                <Image
+                  src={img}
+                  alt={`Thumbnail ${idx + 1}`}
+                  fill
+                  className="object-cover rounded-full"
+                />
               </div>
-            )}
-          </div>
+            </button>
+          ))}
         </div>
       )}
-    </section>
+    </div>
+  </div>
+)}   </section>
   )
 }

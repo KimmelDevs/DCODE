@@ -20,18 +20,41 @@ export default function DashboardPage() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [isHovering, setIsHovering] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
   const timeoutId = useRef(null)
 
-  const scrollTo = (ref) => {
+  const scrollTo = (ref, section) => {
     ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     setIsHeaderVisible(true)
-
+    setActiveSection(section)
   }
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
       
+      // Determine active section based on scroll position
+      const sections = [
+        { ref: headerRef, id: 'home' },
+        { ref: aboutRef, id: 'about' },
+        { ref: servicesRef, id: 'services' },
+        { ref: projectsRef, id: 'projects' },
+        { ref: graphicsRef, id: 'graphics' },
+        { ref: teamRef, id: 'team' }
+      ]
+      
+      for (const section of sections) {
+        const element = section.ref.current
+        if (element) {
+          const { top, height } = element.getBoundingClientRect()
+          if (top <= 100 && top + height > 100) {
+            setActiveSection(section.id)
+            break
+          }
+        }
+      }
+      
+      // Header visibility logic
       if (currentScrollY < lastScrollY) {
         // Scrolling up
         setIsHeaderVisible(true)
@@ -42,8 +65,6 @@ export default function DashboardPage() {
       
       setLastScrollY(currentScrollY)
     }
-
-    
 
     window.addEventListener('scroll', handleScroll)
     return () => {
@@ -66,7 +87,7 @@ export default function DashboardPage() {
         onMouseLeave={() => {
           setIsHovering(false)
           if (window.scrollY > 100) {
-            
+            // Optional: Hide header again after delay if not at top
           }
         }}
       >
@@ -79,64 +100,70 @@ export default function DashboardPage() {
               height={70} 
               className="hover:opacity-90 transition-opacity cursor-pointer"
               priority
-              onClick={() => scrollTo(headerRef)}
+              onClick={() => scrollTo(headerRef, 'home')}
             />
           </div>
         
           <nav className="hidden md:block">
             <ul className="flex space-x-6 lg:space-x-8 items-center">
-              <li>
+              <li className="relative">
                 <button 
-                  onClick={() => scrollTo(headerRef)} 
-                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
+                  onClick={() => scrollTo(headerRef, 'home')} 
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium group"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   Home
+                  <span className={`absolute left-0 bottom-0 h-0.5 bg-[#3f4ca0] transition-all duration-300 ${activeSection === 'home' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </button>
               </li>
-              <li>
+              <li className="relative">
                 <button 
-                  onClick={() => scrollTo(aboutRef)} 
-                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
+                  onClick={() => scrollTo(aboutRef, 'about')} 
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium group"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   About
+                  <span className={`absolute left-0 bottom-0 h-0.5 bg-[#3f4ca0] transition-all duration-300 ${activeSection === 'about' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </button>
               </li>
-              <li>
+              <li className="relative">
                 <button 
-                  onClick={() => scrollTo(servicesRef)} 
-                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
+                  onClick={() => scrollTo(servicesRef, 'services')} 
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium group"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   Services
+                  <span className={`absolute left-0 bottom-0 h-0.5 bg-[#3f4ca0] transition-all duration-300 ${activeSection === 'services' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </button>
               </li>
-              <li>
+              <li className="relative">
                 <button 
-                  onClick={() => scrollTo(teamRef)} 
-                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
+                  onClick={() => scrollTo(teamRef, 'team')} 
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium group"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   Team
+                  <span className={`absolute left-0 bottom-0 h-0.5 bg-[#3f4ca0] transition-all duration-300 ${activeSection === 'team' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </button>
               </li>
-              <li>
+              <li className="relative">
                 <button 
-                  onClick={() => scrollTo(projectsRef)} 
-                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
+                  onClick={() => scrollTo(projectsRef, 'projects')} 
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium group"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   Projects
+                  <span className={`absolute left-0 bottom-0 h-0.5 bg-[#3f4ca0] transition-all duration-300 ${activeSection === 'projects' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </button>
               </li>
-              <li>
+              <li className="relative">
                 <button 
-                  onClick={() => scrollTo(graphicsRef)} 
-                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
+                  onClick={() => scrollTo(graphicsRef, 'graphics')} 
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium group"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   Graphics
+                  <span className={`absolute left-0 bottom-0 h-0.5 bg-[#3f4ca0] transition-all duration-300 ${activeSection === 'graphics' ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </button>
               </li>
             </ul>
@@ -147,34 +174,34 @@ export default function DashboardPage() {
       </header>
 
       {/* Main Content */}
-      <main >
+      <main>
         {/* Hero Section */}
         <section ref={headerRef}>
           <Hero />
         </section>
         
         {/* About Section */}
-        <section ref={aboutRef} >
+        <section ref={aboutRef}>
           <About />
         </section>
         
         {/* Services Section */}
-        <section ref={servicesRef} >
+        <section ref={servicesRef}>
           <Services />
         </section>
         
         {/* Projects Section */}
-        <section ref={projectsRef} >
+        <section ref={projectsRef}>
           <Works />
         </section>
         
         {/* Graphics Section */}
-        <section ref={graphicsRef} >
+        <section ref={graphicsRef}>
           <Graphics />
         </section>
         
         {/* Team Section */}
-        <section ref={teamRef} >
+        <section ref={teamRef}>
           <ProductSlider />
         </section>
       </main>
