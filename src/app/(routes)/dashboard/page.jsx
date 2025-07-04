@@ -1,13 +1,13 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import MeetTheTeam from './_components/meet'
 import About from './_components/about'
-import Contacts from './_components/contact'
-import Projects from './_components/projects'
 import Services from './_components/services'
 import Image from 'next/image'
 import Graphics from './_components/graphics'
+import Works from './_components/works'
+import Hero from './_components/heropage'
+import ProductSlider from './_components/slider'
 
 export default function DashboardPage() {
   const headerRef = useRef(null)
@@ -15,15 +15,17 @@ export default function DashboardPage() {
   const aboutRef = useRef(null)
   const servicesRef = useRef(null)
   const projectsRef = useRef(null)
-  const contactsRef = useRef(null)
+  const graphicsRef = useRef(null)
   
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [isHovering, setIsHovering] = useState(false)
-  let timeoutId = useRef(null)
+  const timeoutId = useRef(null)
 
   const scrollTo = (ref) => {
     ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setIsHeaderVisible(true)
+
   }
 
   useEffect(() => {
@@ -31,23 +33,17 @@ export default function DashboardPage() {
       const currentScrollY = window.scrollY
       
       if (currentScrollY < lastScrollY) {
+        // Scrolling up
         setIsHeaderVisible(true)
-        resetTimeout()
-      } else if (currentScrollY > 100) {
+      } else if (currentScrollY > 100 && currentScrollY > lastScrollY) {
+        // Scrolling down past 100px
         setIsHeaderVisible(false)
       }
       
       setLastScrollY(currentScrollY)
     }
 
-    const resetTimeout = () => {
-      clearTimeout(timeoutId.current)
-      timeoutId.current = setTimeout(() => {
-        if (!isHovering && window.scrollY > 100) {
-          setIsHeaderVisible(false)
-        }
-      }, 5000)
-    }
+    
 
     window.addEventListener('scroll', handleScroll)
     return () => {
@@ -57,44 +53,42 @@ export default function DashboardPage() {
   }, [lastScrollY, isHovering])
 
   return (
-    <div className="min-h-screen relative" style={{ 
-      backgroundImage: "url('/background7.jpg')",
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed'
-    }}>
-      {/* Header Section - positioned absolutely within the background */}
+    <div className="min-h-screen relative bg-white">
+      {/* Fixed Header Section */}
       <header 
         ref={headerRef}
-        className={`fixed top-0 w-full z-50 transition-transform duration-300 ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`fixed top-0 w-full z-50 transition-transform duration-300 ${isHeaderVisible ? 'translate-y-0' : '-translate-y-full'} bg-white shadow-md border-b border-gray-100`}
         onMouseEnter={() => {
           setIsHovering(true)
           setIsHeaderVisible(true)
+          clearTimeout(timeoutId.current)
         }}
         onMouseLeave={() => {
           setIsHovering(false)
           if (window.scrollY > 100) {
-            timeoutId.current = setTimeout(() => {
-              setIsHeaderVisible(false)
-            }, 5000)
+            
           }
         }}
       >
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <Image 
-            src="/logo.png" 
-            alt="DCODE Logo" 
-            width={80} 
-            height={40} 
-            className="mr-4"
-          />
-          
-          <nav>
-            <ul className="flex space-x-8">
+        <div className="container mx-auto px-4 sm:px-6 py-3 flex justify-between items-center">
+          <div className="flex items-center">
+            <Image 
+              src="/a.png" 
+              alt="DCODE Logo" 
+              width={140} 
+              height={70} 
+              className="hover:opacity-90 transition-opacity cursor-pointer"
+              priority
+              onClick={() => scrollTo(headerRef)}
+            />
+          </div>
+        
+          <nav className="hidden md:block">
+            <ul className="flex space-x-6 lg:space-x-8 items-center">
               <li>
                 <button 
                   onClick={() => scrollTo(headerRef)} 
-                  className="text-white hover:text-[#3f4ca0] transition-colors" 
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   Home
@@ -103,7 +97,7 @@ export default function DashboardPage() {
               <li>
                 <button 
                   onClick={() => scrollTo(aboutRef)} 
-                  className="text-white hover:text-[#3f4ca0] transition-colors"
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   About
@@ -112,7 +106,7 @@ export default function DashboardPage() {
               <li>
                 <button 
                   onClick={() => scrollTo(servicesRef)} 
-                  className="text-white hover:text-[#3f4ca0] transition-colors"
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   Services
@@ -121,7 +115,7 @@ export default function DashboardPage() {
               <li>
                 <button 
                   onClick={() => scrollTo(teamRef)} 
-                  className="text-white hover:text-[#3f4ca0] transition-colors"
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   Team
@@ -130,7 +124,7 @@ export default function DashboardPage() {
               <li>
                 <button 
                   onClick={() => scrollTo(projectsRef)} 
-                  className="text-white hover:text-[#3f4ca0] transition-colors"
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
                   Projects
@@ -138,74 +132,54 @@ export default function DashboardPage() {
               </li>
               <li>
                 <button 
-                  onClick={() => scrollTo(contactsRef)} 
-                  className="text-white hover:text-[#3f4ca0] transition-colors"
+                  onClick={() => scrollTo(graphicsRef)} 
+                  className="text-gray-800 hover:text-[#3f4ca0] transition-colors px-3 py-2 rounded-md text-sm font-medium"
                   style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}
                 >
-                  Contact
+                  Graphics
                 </button>
               </li>
             </ul>
           </nav>
+
+          {/* Mobile menu button would go here */}
         </div>
       </header>
 
-      {/* Content - starts at top of page (no extra space) */}
-      <div className="pt-0">
+      {/* Main Content */}
+      <main >
         {/* Hero Section */}
-        <div className="container mx-auto px-6 pt-32 pb-20">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:pl-8 md:w-2/3 text-center md:text-left">
-              <p className="text-[#1f99ce] mb-2 text-lg" style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}>Wassup</p>
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-4" style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}>
-                We are <span className="text-[#1f99ce]">D</span>
-                <span className="text-[#1f99ce]">CODE</span>!<br />
-                <span className="text-2xl md:text-3xl" style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}>We are from Philippines</span>
-              </h1>
-            </div>
-            
-            <div className="md:w-1/3 mt-8 md:mt-0 flex justify-center md:justify-end">
-              <Image
-                src="/header.png"
-                alt="DCODE Mascot"
-                width={300}
-                height={300}
-                className="object-contain animate-bounce"
-              />
-            </div>
-          </div>
-        </div>
-
-        <main className="container mx-auto px-6 pb-16">
-          {/* About Section */}
-          <section ref={aboutRef} className="mb-16 pt-16">
-            <About />
-          </section>
-          
-          {/* Services Section */}
-          <section ref={servicesRef} className="mb-16 pt-16">
-            <Services />
-          </section>
-          
-          {/* Projects Section */}
-          <section ref={projectsRef} className="mb-16 pt-16">
-            <Projects />
-          </section>
-          <section ref={contactsRef} className="mb-16 pt-16">
-            <Graphics />
-          </section>
+        <section ref={headerRef}>
+          <Hero />
+        </section>
         
-          {/* Team Section */}
-          <section ref={teamRef} className="mb-16 pt-16">
-            <MeetTheTeam />
-          </section>
-          
-          {/* Contact Section */}
-          <section ref={contactsRef} className="mb-16 pt-16">
-            <Contacts />
-          </section>
-        </main>
-      </div>
+        {/* About Section */}
+        <section ref={aboutRef} >
+          <About />
+        </section>
+        
+        {/* Services Section */}
+        <section ref={servicesRef} >
+          <Services />
+        </section>
+        
+        {/* Projects Section */}
+        <section ref={projectsRef} >
+          <Works />
+        </section>
+        
+        {/* Graphics Section */}
+        <section ref={graphicsRef} >
+          <Graphics />
+        </section>
+        
+        {/* Team Section */}
+        <section ref={teamRef} >
+          <ProductSlider />
+        </section>
+      </main>
+
+      {/* Footer would go here */}
     </div>
   )
 }
