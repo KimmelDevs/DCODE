@@ -8,6 +8,8 @@ import Graphics from './_components/graphics'
 import Works from './_components/works'
 import Hero from './_components/heropage'
 import ProductSlider from './_components/slider'
+import { Mail, Instagram, Facebook, Phone, Send } from 'lucide-react'
+
 
 export default function DashboardPage() {
   const headerRef = useRef(null)
@@ -208,6 +210,71 @@ export default function DashboardPage() {
       </main>
 
       {/* Footer would go here */}
+      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    {/* Company Info */}
+    <div className="space-y-4">
+      <h3 className="text-xl font-bold" style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}>
+        DCODE
+      </h3>
+      <p className="text-gray-300">
+        Creating innovative digital solutions to transform your business and ideas into reality.
+      </p>
+      <div className="flex space-x-4">
+        <a href="mailto:info@dcode.com" className="text-gray-300 hover:text-white transition-colors">
+          <Mail className="w-5 h-5" />
+        </a>
+        <a href="https://instagram.com/dcode" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+          <Instagram className="w-5 h-5" />
+        </a>
+        <a href="https://facebook.com/dcode" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+          <Facebook className="w-5 h-5" />
+        </a>
+        <a href="https://t.me/dcode" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+          <Send className="w-5 h-5" />
+        </a>
+      </div>
+    </div>
+
+    {/* Contact Info */}
+    <div className="space-y-4">
+      <h4 className="text-lg font-semibold" style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}>
+        Contact Us
+      </h4>
+      <div className="space-y-2">
+        <div className="flex items-center space-x-2 text-gray-300">
+          <Phone className="w-5 h-5" />
+          <a href="tel:+1234567890" className="hover:text-white transition-colors">
+            +1 (234) 567-890
+          </a>
+        </div>
+        <div className="flex items-center space-x-2 text-gray-300">
+          <Mail className="w-5 h-5" />
+          <a href="mailto:info@dcode.com" className="hover:text-white transition-colors">
+            info@dcode.com
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {/* Address */}
+    <div className="space-y-4">
+      <h4 className="text-lg font-semibold" style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}>
+        Our Location
+      </h4>
+      <address className="not-italic text-gray-300">
+        Calbayog City<br />
+        Brgy.<br />
+        Phili, Samar 94000
+      </address>
+    </div>
+  </div>
+
+  {/* Copyright */}
+  <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-gray-800 text-center text-gray-400 text-sm">
+    <p>© {new Date().getFullYear()} DCODE. All rights reserved.</p>
+  </div>
+</footer>
     </div>
   )
 }
