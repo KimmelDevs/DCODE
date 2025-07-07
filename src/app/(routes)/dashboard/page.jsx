@@ -210,30 +210,66 @@ export default function DashboardPage() {
       </main>
 
       {/* Footer would go here */}
-      <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-    {/* Company Info */}
-    <div className="space-y-4">
-      <h3 className="text-xl font-bold" style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}>
-        DCODE
-      </h3>
-      <p className="text-gray-300">
+      {/* Footer would go here */}
+<footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    {/* Company Info - Made wider */}
+    <div className="space-y-4 md:col-span-2">
+      <div className="flex items-center space-x-2">
+        <Image 
+          src="/a.png" 
+          alt="DCODE Logo" 
+          width={120} 
+          height={60} 
+          className="hover:opacity-90 transition-opacity"
+        />
+      </div>
+      <p className="text-gray-300 max-w-md">
         Creating innovative digital solutions to transform your business and ideas into reality.
       </p>
-      <div className="flex space-x-4">
-        <a href="mailto:info@dcode.com" className="text-gray-300 hover:text-white transition-colors">
-          <Mail className="w-5 h-5" />
-        </a>
-        <a href="https://instagram.com/dcode" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+      <div className="flex space-x-4 pt-2">
+        <a href="https://instagram.com/dcode.hub" target="_blank" rel="noopener noreferrer" 
+          className="text-gray-300 hover:text-white transition-colors p-1.5 rounded-full hover:bg-gray-700">
           <Instagram className="w-5 h-5" />
         </a>
-        <a href="https://facebook.com/dcode" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
+        <a href="https://www.facebook.com/profile.php?id=61555924405854" target="_blank" rel="noopener noreferrer" 
+          className="text-gray-300 hover:text-white transition-colors p-1.5 rounded-full hover:bg-gray-700">
           <Facebook className="w-5 h-5" />
         </a>
-        <a href="https://t.me/dcode" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
-          <Send className="w-5 h-5" />
-        </a>
       </div>
+    </div>
+
+    {/* Quick Links */}
+    <div className="space-y-4">
+      <h4 className="text-lg font-semibold" style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}>
+        Quick Links
+      </h4>
+      <ul className="space-y-2">
+        <li>
+          <button 
+            onClick={() => scrollTo(headerRef, 'home')} 
+            className="text-gray-300 hover:text-white transition-colors text-sm"
+          >
+            Home
+          </button>
+        </li>
+        <li>
+          <button 
+            onClick={() => scrollTo(aboutRef, 'about')} 
+            className="text-gray-300 hover:text-white transition-colors text-sm"
+          >
+            About
+          </button>
+        </li>
+        <li>
+          <button 
+            onClick={() => scrollTo(servicesRef, 'services')} 
+            className="text-gray-300 hover:text-white transition-colors text-sm"
+          >
+            Services
+          </button>
+        </li>
+      </ul>
     </div>
 
     {/* Contact Info */}
@@ -241,32 +277,20 @@ export default function DashboardPage() {
       <h4 className="text-lg font-semibold" style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}>
         Contact Us
       </h4>
-      <div className="space-y-2">
-        <div className="flex items-center space-x-2 text-gray-300">
-          <Phone className="w-5 h-5" />
-          <a href="tel:+1234567890" className="hover:text-white transition-colors">
-            +1 (234) 567-890
+      <div className="space-y-3">
+        <div className="flex items-start space-x-3">
+          <Phone className="w-5 h-5 mt-0.5 flex-shrink-0 text-gray-400" />
+          <a href="tel:+639754884910" className="text-gray-300 hover:text-white transition-colors text-sm">
+            +63 975 488 4910
           </a>
         </div>
-        <div className="flex items-center space-x-2 text-gray-300">
-          <Mail className="w-5 h-5" />
-          <a href="mailto:info@dcode.com" className="hover:text-white transition-colors">
-            info@dcode.com
+        <div className="flex items-start space-x-3">
+          <Mail className="w-5 h-5 mt-0.5 flex-shrink-0 text-gray-400" />
+          <a href="mailto:dcode2825@gmail.com" className="text-gray-300 hover:text-white transition-colors text-sm">
+            dcode2825@gmail.com
           </a>
         </div>
       </div>
-    </div>
-
-    {/* Address */}
-    <div className="space-y-4">
-      <h4 className="text-lg font-semibold" style={{ fontFamily: "'Arial Rounded MT Bold', sans-serif" }}>
-        Our Location
-      </h4>
-      <address className="not-italic text-gray-300">
-        Calbayog City<br />
-        Brgy.<br />
-        Phili, Samar 94000
-      </address>
     </div>
   </div>
 
