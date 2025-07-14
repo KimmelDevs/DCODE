@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Graphics from './_components/graphics'
 import Works from './_components/works'
 import MemoryCardsCarousel from './_components/meet'
+import { Card } from './_components/ui/card' 
 import Hero from './_components/heropage'
 import ProductSlider from './_components/slider'
 import { Mail, Instagram, Facebook, Phone, Send } from 'lucide-react'
@@ -185,16 +186,28 @@ export default function DashboardPage() {
         </section>
         
         {/* About Section */}
-        <section ref={aboutRef}>
-          <About />
-        </section>
-        
-        {/* Services Section */}
-        <section ref={servicesRef}>
-          <Services />
-        </section>
-        
-        {/* Projects Section */}
+   <section ref={aboutRef} className="relative "> {/* Added pb-16 for space for the card */}
+    <About />
+    
+    {/* Overlapping Card - now positioned to truly overlap */}
+    <div className="absolute -bottom-8 left-0 w-full flex justify-center z-10">
+      <Card className="mx-4 px-8 py-6 bg-gradient-to-r from-blue-50 to-indigo-50 shadow-xl rounded-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 animate-[bounce_6s_infinite]">
+  <h3 className="text-xl font-medium text-gray-800 text-center">
+    Ready to bring your ideas to life?{' '}
+    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+      Let's create something amazing together.
+    </span>
+  </h3>
+</Card>
+    </div>
+  </section>
+  
+  {/* Services Section - removed pt-20 and added negative margin */}
+  <section ref={servicesRef} className="relative z-0 -mt-8">
+    <Services />
+  </section>
+  
+       {/* Projects Section */}
         <section ref={projectsRef}>
           <Works />
         </section>

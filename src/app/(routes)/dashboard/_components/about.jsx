@@ -170,12 +170,6 @@ export default function About() {
             transition: 'opacity 0.6s ease-out 1s, transform 0.6s ease-out 1s',
           }}
         >
-          <Card className="inline-block px-8 py-4 bg-white/80 backdrop-blur-sm">
-            <h3 className="text-xl font-medium text-gray-800">
-              Ready to bring your ideas to life?{' '}
-              <span className="text-blue-600">Let's create something amazing together.</span>
-            </h3>
-          </Card>
         </div>
       </div>
     </section>
