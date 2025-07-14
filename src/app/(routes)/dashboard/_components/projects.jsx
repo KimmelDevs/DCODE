@@ -67,7 +67,7 @@ export default function Projects() {
       image: "/kimmel.jpg",
       tags: ["Android", "Jetpack Compose", "Firebase"],
       details: "FitTitan offers personalized workout plans based on user goals and fitness levels. Includes video demonstrations, progress tracking, and social features to connect with other users.",
-      gallery: ["/projects/fititan/intro.png","/projects/fititan/intro.png","/projects/fititan/1.png","/projects/fititan/2.png","/projects/fititan/3.png","/projects/fititan/4.png","/projects/fititan/5.png",],
+      gallery: ["/projects/fititan/intro.png","/projects/fititan/1.png","/projects/fititan/2.png","/projects/fititan/3.png","/projects/fititan/4.png","/projects/fititan/5.png",],
       technologies: ["Jetpack Compose", "Firebase Storage", "ExoPlayer", "Hilt DI"],
       features: ["Personalized workouts", "Video demonstrations", "Progress tracking", "Social features"]
     },
@@ -101,6 +101,18 @@ export default function Projects() {
     "Responsive and user-friendly UI"
   ]
 },
+
+{
+  id: 10,
+  name: "BrewBuddy",
+  description: "Card-based memory game developed in Android Studio",
+  image: "/memoryflip.jpg",
+  tags: ["Android", "Kotlin", "XML"],
+  details: "Memory Flip is a classic card matching game built for Android devices. Players flip cards to reveal symbols and try to find matching pairs, improving memory and concentration.",
+  gallery: ["/projects/brew/brew 1.png", "/projects/brew/brew2.png"],
+  technologies: ["Android Studio", "Kotlin", "XML"],
+  features: ["Multiple levels", "Score tracking", "Timer mode", "Simple UI", "Offline"]
+},
 {
   id: 9,
   name: "Memory Flip",
@@ -111,7 +123,8 @@ export default function Projects() {
   gallery: ["/projects/memoryflip/intro.png", "/projects/memoryflip/1.png"],
   technologies: ["Android Studio", "Kotlin", "XML"],
   features: ["Multiple levels", "Score tracking", "Timer mode", "Simple UI", "Offline"]
-}
+},
+
   ]
 
   const webProjects = [
@@ -133,7 +146,7 @@ export default function Projects() {
       image: "/kimmel.jpg",
       tags: ["React", "Node.js", "Firebase"],
       details: "Spent is a comprehensive expense tracker that helps users manage their personal finances. Features include budget planning, expense categorization, and detailed reports with visualizations.",
-      gallery: ["/projects/spent/intro.png","/projects/spent/1 (5).png","/projects/spent/1 (4).png","/projects/spent/1 (3).png","/projects/spent/1 (1).png","/projects/spent/1 (2).png",],
+      gallery: ["/projects/spent/intro copy.png","/projects/spent/1 (5).png","/projects/spent/1 (4).png","/projects/spent/1 (3).png","/projects/spent/1 (1).png","/projects/spent/1 (2).png",],
       technologies: ["React Hooks", "Node.js", "Express", "Chart.js"],
       features: ["Budget planning", "Expense categorization", "Visual reports", "Multi-device sync"]
     },

@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Code, Smartphone, Globe, Paintbrush, Database, LayoutTemplate } from 'lucide-react'
 
 export default function Works() {
-  const [activeTab, setActiveTab] = useState('all')
+  const [activeTab, setActiveTab] = useState('android')
   const [expandedProject, setExpandedProject] = useState(null)
   const [selectedImages, setSelectedImages] = useState({})
   const [modalOpen, setModalOpen] = useState(false)
@@ -88,7 +88,87 @@ const [scrollY, setScrollY] = useState(0);
       technologies: ["Android Studio", "Kotlin", "XML"],
       features: ["Multiple levels", "Score tracking", "Timer mode", "Simple UI"]
     },
+    {
+  id: 10,
+  name: "BrewBuddy",
+  description: "Mobile-first ordering platform for milk tea shops and customers.",
+  image: "/memoryflip.jpg",
+  type: "android",
+  icon: <Smartphone className="w-5 h-5" />,
+  tags: ["Node.js", "Express", "MongoDB", "React Native", "Expo", "Socket.io", "AWS", "JWT"],
+  details: `BrewBuddy is a full-stack ordering solution designed specifically for milk tea shops. The platform features a mobile-first interface for both customers and shop staff, built with React Native using Expo. 
+
+The backend is powered by Node.js and Express, hosted on AWS EC2, and connects to a MongoDB database. Real-time order updates are enabled through Socket.io, providing seamless communication between users and staff. Product images are managed using AWS S3.
+
+Role-based authentication and access control are implemented using JWT. The system supports real-time order processing and staff notifications, offering a complete and efficient ordering experience.`,
+  gallery: [
+    "/projects/brew/brew1.png",
+    "/projects/brew/brew2.png"
+  ],
+  technologies: [
+    "React Native",
+    "Expo",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "AWS EC2",
+    "AWS S3",
+    "Socket.io",
+    "JWT"
+  ],
+  features: [
+    "Mobile-first design",
+    "Real-time order handling",
+    "Staff-customer interface",
+    "RESTful API",
+    "Image upload with AWS S3",
+    "Authentication with JWT",
+    "Hosted on AWS EC2"
+  ]
+    },
+    {
+  id: 11,
+  name: "HappyPaws2",
+  description: "Appointment and aftercare management platform for veterinary clinics and pet owners.",
+  image: "/projects/happypaws/cover.jpg",
+  type: "android",
+  icon: <Smartphone className="w-5 h-5" />,
+  tags: ["React Native", "Node.js", "Express", "MongoDB", "AWS S3", "JWT", "Vercel", "OpenRouter"],
+  details: `HappyPaws is a full-stack solution for veterinary clinics to streamline appointment scheduling, digitize aftercare instructions, and centralize pet health records. 
+
+Key features include user authentication, appointment management, digital aftercare, pet profile management, and an admin dashboard with insights. JWT is used for secure role-based authentication.
+
+The tech stack includes React Native for the mobile interface, Node.js and Express for the backend, and MongoDB for data storage. Pet images and records are managed using AWS S3. The backend is deployed on Vercel for quick scalability and serverless efficiency.
+
+A simple AI-powered chatbot is integrated using a model from OpenRouter via API key for client interaction and assistance.`,
+  gallery: [
     
+    "/projects/happypawss/10.png",
+    "/projects/happypawss/8.png",
+    "/projects/happypawss/9.png"
+  ],
+  technologies: [
+    "React Native",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "AWS S3",
+    "JWT",
+    "Vercel",
+    "OpenRouter"
+  ],
+  features: [
+    "Appointment management",
+    "Digitized aftercare instructions",
+    "Pet profile storage",
+    "Admin dashboard with insights",
+    "User authentication with JWT",
+    "Chatbot integration (OpenRouter API)",
+    "AWS S3 file/image handling",
+    "Vercel backend deployment"
+  ]
+},
+
     // Web Projects
     {
       id: 4,
@@ -112,7 +192,7 @@ const [scrollY, setScrollY] = useState(0);
       type: "web",
       icon: <Globe className="w-5 h-5" />,
       details: "Spent is a comprehensive expense tracker that helps users manage their personal finances with budget planning and expense categorization.",
-      gallery: ["/projects/spent/intro.png","/projects/spent/1 (5).png","/projects/spent/1 (4).png","/projects/spent/1 (3).png","/projects/spent/1 (1).png","/projects/spent/1 (2).png"],
+      gallery: ["/projects/spent/intro copy.png","/projects/spent/1 (5).png","/projects/spent/1 (4).png","/projects/spent/1 (3).png","/projects/spent/1 (1).png","/projects/spent/1 (2).png"],
       technologies: ["React Hooks", "Node.js", "Express", "Chart.js"],
       features: ["Budget planning", "Expense categorization", "Visual reports", "Multi-device sync"]
     },
@@ -241,7 +321,6 @@ const [scrollY, setScrollY] = useState(0);
         <div className="flex justify-center mb-12 overflow-x-auto">
           <div className="flex space-x-2 p-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
             {[
-              { id: 'all', label: 'All Projects', icon: <LayoutTemplate className="w-5 h-5" /> },
               { id: 'android', label: 'Android', icon: <Smartphone className="w-5 h-5" /> },
               { id: 'web', label: 'Web', icon: <Globe className="w-5 h-5" /> }
             ].map((tab, index) => (

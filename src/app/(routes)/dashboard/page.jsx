@@ -6,6 +6,7 @@ import Services from './_components/services'
 import Image from 'next/image'
 import Graphics from './_components/graphics'
 import Works from './_components/works'
+import MemoryCardsCarousel from './_components/meet'
 import Hero from './_components/heropage'
 import ProductSlider from './_components/slider'
 import { Mail, Instagram, Facebook, Phone, Send } from 'lucide-react'
@@ -207,7 +208,7 @@ export default function DashboardPage() {
         <section ref={teamRef}>
           <ProductSlider />
         </section>
-      </main>
+        </main>
 
       {/* Footer would go here */}
       {/* Footer would go here */}

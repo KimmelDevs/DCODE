@@ -4,48 +4,72 @@ import Image from 'next/image';
 import { Card } from './ui/card';
 import { motion, AnimatePresence } from 'framer-motion';
 
-
 const TeamSlider = () => {
   const teamMembers = [
     {
-      id: 1,
-      name: "Kimmel Delector",
-      role: "Lead Manager",
-      description: "Drives strategic direction, oversees operations, and fosters innovation and team growth with a sharp eye for leadership and long-term vision.",
-      image: "/kimmel1.jpg",
-      skills: [
-        { name: "Leadership", percentage: 90 },
-        { name: "Strategy", percentage: 85 },
-        { name: "Adaptability", percentage: 95 }
-      ],
-      personality: "Friendly and intelligent with a strategic mindset. Naturally inclined toward leadership and capable of handling pressure. Learns through experimentation and thrives when solving complex challenges."
-    },
+  id: 1,
+  name: "Kimmel Delector",
+  role: "Lead Developer",
+  description: "Leads full-stack development across mobile and web platforms with deep expertise in frontend interfaces, backend architecture, and cross-platform integration. Delivers scalable, performant, and visually polished solutions.",
+  image: "/kimmel1.jpg",
+  skills: [
+    { name: "Next.js", percentage: 90 },
+    { name: "Kotlin", percentage: 85 },
+    { name: "TailwindCSS", percentage: 88 }
+  ],
+  techstack: [
+    "Next.js",
+    "React",
+    "TailwindCSS",
+    "HTML5",
+    "CSS3",
+    "Kotlin",
+    "XML",
+    "Node.js",
+    "Express",
+    "MongoDB"
+  ],
+  personality: "Focused and resourceful, with a hands-on approach to solving development challenges. Naturally curious and quick to adapt, excels in leading technical decisions and delivering quality results under pressure."
+},
     {
       id: 2,
       name: "Art Hemplo",
-      role: "Frontend Developer",
-      description: "Transforms design concepts into responsive, engaging user interfaces. Blends creativity with technical precision to deliver smooth and intuitive web experiences.",
-      image: "/art3.jpg.png",
+      role: "Fullstack Native Android Developer",
+      description: "Specializes in native Android development with expertise in Kotlin and Jetpack Compose, while expanding into multiplatform solutions.",
+      image: "/arter.jpg",
       skills: [
         { name: "UI Development", percentage: 88 },
         { name: "Creativity", percentage: 97 },
         { name: "Problem Solving", percentage: 85 }
       ],
-      personality: "A quiet innovator with a strong independent streak. Excels when given autonomy, yet contributes meaningfully in structured collaborations. Persistent and imaginative, with a knack for refining and elevating existing ideas."
-    },
-    {
-      id: 3,
-      name: "Dainil Villianueva",
-      role: "Marketing Expert",
-      description: "Leads brand promotion through strategic advertising, digital outreach, and compelling marketing materials like flyers and campaigns.",
-      image: "/danil3.jpg",
-      skills: [
-        { name: "Marketing Strategy", percentage: 87 },
-        { name: "Creativity", percentage: 89 },
-        { name: "Communication", percentage: 10 }
+      techstack: [
+        "Jetpack Compose", 
+        "Kotlin", 
+        "Kotlin Multiplatform", 
+        "Compose Multiplatform",
       ],
-      personality: "Supportive and effort-driven when present. Prefers contributing to others' ideas than leading. Works best when creatively inspired and not overburdened."
-    },
+      personality: "A quiet innovator with a strong independent streak. Excels when given autonomy, yet contributes meaningfully in structured collaborations. Persistent and imaginative, with a knack for refining and elevating existing ideas. Confident, wise, and vocal on every public presentations."
+    },{
+  id: 3,
+  name: "Dainil Villianueva",
+  role: "Graphic Designer",
+  description: "Crafts visually engaging designs for digital and print media, specializing in brand identity, layout design, and creative storytelling through graphics and illustrations.",
+  image: "/danil3.jpg",
+  skills: [
+    { name: "Graphic Design", percentage: 90 },
+    { name: "Creativity", percentage: 92 },
+    { name: "Adobe Tools", percentage: 88 }
+  ],
+  techstack: [
+    "Adobe Photoshop",
+    "Adobe Illustrator",
+    "Adobe InDesign",
+    "Figma",
+    "Canva",
+    "Sketch"
+  ],
+  personality: "Visually driven and creatively expressive. Enjoys collaborative environments where ideas can be transformed into compelling visuals. Best when given space for creative freedom and clear direction."
+},
     {
       id: 4,
       name: "Jaynesa Perol",
@@ -56,6 +80,15 @@ const TeamSlider = () => {
         { name: "Design", percentage: 93 },
         { name: "Photography", percentage: 91 },
         { name: "Creativity", percentage: 95 }
+      ],
+      techstack: [
+        "Figma",
+        "Adobe Photoshop",
+        "Adobe Illustrator",
+        "Adobe Lightroom",
+        "Sketch",
+        "Prototyping Tools",
+        "Photography Equipment"
       ],
       personality: "Creative and visually oriented. Emotionally driven; needs encouragement and a supportive environment. Performs best when feeling supported and appreciated."
     },
@@ -68,10 +101,68 @@ const TeamSlider = () => {
       skills: [
         { name: "Backend Development", percentage: 86 },
         { name: "Problem Solving", percentage: 88 },
-        { name: "Efficiency", percentage: 90 },
-        { name: "Geekiness", percentage: 89 }
+        { name: "Efficiency", percentage: 90 }
+      ],
+      techstack: [
+        "Typescript",
+        "Javascript",
+        "Firebase",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "PostgreSQL",
+        "Python",
+        "Java",
+        "Docker",
+        "Kotlin XML",
+        "HTML",
+        "CSS"
       ],
       personality: "Driven by personal growth — values learning through doing. Often works alone to test his abilities, but can collaborate when needed. Currently in a 'transition phase' from dependence to self-sufficiency. Values deep understanding over surface-level success."
+    },
+    {
+      id: 6,
+      name: "Joshua Padilla",
+      role: "FullStack Mobile Programmer",
+      description: "Specializes in mobile application development with a focus on creating responsive and user-friendly interfaces.",
+      image: "/joshua2.jpg",
+      skills: [
+        { name: "Mobile Development", percentage: 82 },
+        { name: "UI Implementation", percentage: 78 },
+        { name: "Debugging", percentage: 85 }
+      ],
+      techstack: [
+        "Mongodb",
+        "ExpressJS",
+        "React",
+        "React Native",
+        "NodeJS",
+      ],
+      personality: "Detail-oriented developer who enjoys tackling technical challenges. Works well in team environments and is always eager to learn new mobile technologies."
+    },
+    {
+      id: 7,
+      name: "Lance Antor",
+      role: "Fullstack Web Developer",
+      description: "Creates comprehensive web solutions from frontend interfaces to backend systems, ensuring seamless user experiences.",
+      image: "/Antor.png",
+      skills: [
+        { name: "Frontend Development", percentage: 88 },
+        { name: "Backend Development", percentage: 85 },
+        { name: "System Architecture", percentage: 82 }
+      ],
+      techstack: [
+  "Java",
+  "C++",
+  "Python",
+  "JavaScript",
+  "HTML5",
+  "CSS3",
+  "TailwindCSS",
+  "React"
+],
+
+      personality: "Highly committed to creating innovative solutions that enhance usability, optimize performance, and contribute to a more efficient digital future."
     }
   ];
 
@@ -99,7 +190,7 @@ const TeamSlider = () => {
 
   useEffect(() => {
     if (!isAutoRotating) {
-      const timer = setTimeout(() => setIsAutoRotating(true), 10000);
+      const timer = setTimeout(() => setIsAutoRotating(true), 100000);
       return () => clearTimeout(timer);
     }
   }, [isAutoRotating]);
@@ -140,9 +231,7 @@ const TeamSlider = () => {
   const fadeVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
-
-  return (
+  };return (
     <motion.div 
       initial="hidden"
       animate="visible"
@@ -253,43 +342,71 @@ const TeamSlider = () => {
                     </motion.p>
                     
                     <div className="w-full space-y-4">
-                      <motion.div 
-                        className="bg-white/5 p-3 rounded-lg"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                      >
-                        <h4 className="text-lg font-semibold text-white mb-2">Skills</h4>
-                        <div className="space-y-3">
-                          {currentMember.skills.map((skill, index) => (
-                            <motion.div 
-                              key={index}
-                              initial={{ opacity: 0, x: -20 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: 0.3 + index * 0.1 }}
-                            >
-                              <div className="flex justify-between text-white/90 text-sm mb-1">
-                                <span>{skill.name}</span>
-                                <span>{skill.percentage}%</span>
-                              </div>
-                              <div className="w-full bg-white/20 rounded-full h-2">
-                                <motion.div 
-                                  className="bg-gradient-to-r from-cyan-400 to-blue-500 h-2 rounded-full" 
-                                  initial={{ width: 0 }}
-                                  animate={{ width: `${skill.percentage}%` }}
-                                  transition={{ delay: 0.4 + index * 0.1, duration: 0.8 }}
-                                />
-                              </div>
-                            </motion.div>
-                          ))}
-                        </div>
-                      </motion.div>
+                      <div className="flex flex-col md:flex-row gap-4">
+                        <motion.div 
+                          className="bg-white/5 p-3 rounded-lg md:w-1/2"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          <h4 className="text-lg font-semibold text-white mb-2">Skills</h4>
+                          <div className="space-y-3">
+                            {currentMember.skills.map((skill, index) => (
+                              <motion.div 
+                                key={index}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.3 + index * 0.1 }}
+                              >
+                                <div className="flex justify-between text-white/90 text-sm mb-1">
+                                  <span>{skill.name}</span>
+                                  <span>{skill.percentage}%</span>
+                                </div>
+                                <div className="w-full bg-white/20 rounded-full h-2">
+                                  <motion.div 
+                                    className="bg-gradient-to-r from-cyan-400 to-blue-500 h-2 rounded-full" 
+                                    initial={{ width: 0 }}
+                                    animate={{ width: `${skill.percentage}%` }}
+                                    transition={{ delay: 0.4 + index * 0.1, duration: 0.8 }}
+                                  />
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </motion.div>
+                        
+                        {/* Tech Stack Section - moved up where Personality was */}
+                        {currentMember.techstack && currentMember.techstack.length > 0 && (
+                          <motion.div
+                            className="bg-white/5 p-3 rounded-lg md:w-1/2"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.6 }}
+                          >
+                            <h4 className="text-lg font-semibold text-white mb-2">Tech Stack</h4>
+                            <div className="flex flex-wrap gap-2 justify-center">
+                              {currentMember.techstack.map((tech, index) => (
+                                <motion.span
+                                  key={index}
+                                  initial={{ opacity: 0, scale: 0.8 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  transition={{ delay: 0.7 + index * 0.05 }}
+                                  className="px-3 py-1 bg-white/10 rounded-full text-sm text-white/90"
+                                >
+                                  {tech}
+                                </motion.span>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </div>
                       
+                      {/* Personality Section - moved down where Tech Stack was */}
                       <motion.div
                         className="bg-white/5 p-3 rounded-lg"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.6 }}
+                        transition={{ delay: 0.8 }}
                       >
                         <h4 className="text-lg font-semibold text-white mb-2">Personality</h4>
                         <p className="text-white/80 italic text-base leading-relaxed">
