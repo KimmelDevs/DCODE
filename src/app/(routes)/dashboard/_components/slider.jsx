@@ -108,15 +108,12 @@ const TeamSlider = () => {
         "Javascript",
         "Firebase",
         "Node.js",
-        "Express",
         "MongoDB",
-        "PostgreSQL",
         "Python",
         "Java",
         "Docker",
         "Kotlin XML",
-        "HTML",
-        "CSS"
+        
       ],
       personality: "Driven by personal growth — values learning through doing. Often works alone to test his abilities, but can collaborate when needed. Currently in a 'transition phase' from dependence to self-sufficiency. Values deep understanding over surface-level success."
     },
