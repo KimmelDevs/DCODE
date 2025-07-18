@@ -31,6 +31,9 @@ export default function Graphics() {
       { id: 6, src: '/logos/Secondary logo.png', credits: "Kimmel Delector", alt: 'Secondary Logo' },
       { id: 7, src: '/logos/aQUA.png', credits: "Prince Tuazon", alt: 'Aqua Logo' },
       { id: 8, src: '/logos/Company Logo.png', credits: "Prince Tuazon", alt: 'Company Logo' },
+      { id: 9, src: '/logos/reweave.png', credits: "Prince Tuazon", alt: 'Company Logo' },
+      { id: 10, src: '/logos/wrenchi.png', credits: "Prince Tuazon", alt: 'Company Logo' },
+      
     ],
     moodboards: [
       { id: 1, src: '/designs/Mood Board-4.png', credits: "Jaynesa Perol", alt: 'Mood Board 1' },
